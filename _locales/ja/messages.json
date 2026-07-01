@@ -1,0 +1,61 @@
+{
+  "extName": {
+    "message": "Markdown PDF Viewer"
+  },
+  "extDescription": {
+    "message": "MarkdownファイルをPDF風に整形表示し、ブラウザから印刷できる拡張機能です。"
+  },
+  "markdownUrlLabel": {
+    "message": "Markdown URL"
+  },
+  "openPdfButton": {
+    "message": "PDF表示"
+  },
+  "openCurrentTabButton": {
+    "message": "現在のタブを開く"
+  },
+  "openLocalMarkdownButton": {
+    "message": "ローカルMarkdownを開く"
+  },
+  "reloadButton": {
+    "message": "再読み込み"
+  },
+  "printButton": {
+    "message": "印刷"
+  },
+  "tocLabel": {
+    "message": "目次"
+  },
+  "loadingTitle": {
+    "message": "読み込み中"
+  },
+  "loadingMarkdown": {
+    "message": "Markdownを読み込んでいます。"
+  },
+  "noHeadings": {
+    "message": "見出しがありません"
+  },
+  "enterMarkdownUrl": {
+    "message": "Markdown URLを入力してください。"
+  },
+  "invalidUrl": {
+    "message": "URLの形式を確認してください。"
+  },
+  "fetchFailed": {
+    "message": "Markdownを取得できませんでした: $STATUS$",
+    "placeholders": {
+      "status": {
+        "content": "$1"
+      }
+    }
+  },
+  "localMarkdownMissing": {
+    "message": "ローカルMarkdownが見つかりません。ポップアップから再度選択してください。"
+  },
+  "missingMarkdownUrl": {
+    "message": "Markdown URLが指定されていません。"
+  },
+  "loadFailed": {
+    "message": "Markdownの読み込みに失敗しました。"
+  }
+}

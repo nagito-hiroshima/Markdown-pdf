@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "__MSG_extName__",
+  "version": "1.0.0",
+  "default_locale": "en",
+  "description": "__MSG_extDescription__",
+  "permissions": ["activeTab", "storage"],
+  "host_permissions": ["https://raw.githubusercontent.com/*", "https://github.com/*", "https://*/*", "http://*/*"],
+  "action": {
+    "default_title": "__MSG_extName__",
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://github.com/*", "https://raw.githubusercontent.com/*"],
+      "js": ["content-script.js"],
+      "css": ["content-script.css"]
+    }
+  ]
+}

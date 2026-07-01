@@ -1,0 +1,61 @@
+{
+  "extName": {
+    "message": "Markdown PDF Viewer"
+  },
+  "extDescription": {
+    "message": "View Markdown files as a clean PDF-style document and print them from the browser."
+  },
+  "markdownUrlLabel": {
+    "message": "Markdown URL"
+  },
+  "openPdfButton": {
+    "message": "Open PDF View"
+  },
+  "openCurrentTabButton": {
+    "message": "Open Current Tab"
+  },
+  "openLocalMarkdownButton": {
+    "message": "Open Local Markdown"
+  },
+  "reloadButton": {
+    "message": "Reload"
+  },
+  "printButton": {
+    "message": "Print"
+  },
+  "tocLabel": {
+    "message": "Table of Contents"
+  },
+  "loadingTitle": {
+    "message": "Loading"
+  },
+  "loadingMarkdown": {
+    "message": "Loading Markdown."
+  },
+  "noHeadings": {
+    "message": "No headings found"
+  },
+  "enterMarkdownUrl": {
+    "message": "Enter a Markdown URL."
+  },
+  "invalidUrl": {
+    "message": "Check the URL format."
+  },
+  "fetchFailed": {
+    "message": "Could not fetch Markdown: $STATUS$",
+    "placeholders": {
+      "status": {
+        "content": "$1"
+      }
+    }
+  },
+  "localMarkdownMissing": {
+    "message": "Local Markdown was not found. Select the file again from the popup."
+  },
+  "missingMarkdownUrl": {
+    "message": "Markdown URL is missing."
+  },
+  "loadFailed": {
+    "message": "Failed to load Markdown."
+  }
+}

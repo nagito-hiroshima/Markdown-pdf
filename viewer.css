@@ -1,0 +1,320 @@
+:root {
+  color-scheme: light;
+  font-family: Arial, "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo, sans-serif;
+  color: #17202a;
+  background: #eef2f5;
+  --page-width: 210mm;
+}
+
+body {
+  margin: 0;
+}
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 64px;
+  padding: 10px 24px;
+  border-bottom: 1px solid #d5dce5;
+  background: #ffffff;
+}
+
+.eyebrow {
+  margin: 0 0 3px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #64748b;
+}
+
+.topbar h1 {
+  max-width: 62vw;
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 18px;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  flex: 0 0 auto;
+}
+
+button {
+  min-height: 36px;
+  padding: 0 14px;
+  border: 1px solid #c8d2df;
+  border-radius: 6px;
+  background: #ffffff;
+  color: #17202a;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #edf2f7;
+}
+
+#printButton {
+  border-color: #0f766e;
+  background: #0f766e;
+  color: #ffffff;
+}
+
+#printButton:hover {
+  background: #115e59;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(190px, 260px) minmax(0, 1fr);
+  gap: 22px;
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.toc {
+  position: sticky;
+  top: 89px;
+  align-self: start;
+  max-height: calc(100vh - 112px);
+  overflow: auto;
+  padding: 14px;
+  border: 1px solid #d5dce5;
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+.toc-title {
+  margin-bottom: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #415166;
+}
+
+.toc a {
+  display: block;
+  padding: 5px 0;
+  color: #334155;
+  text-decoration: none;
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+.toc a:hover {
+  color: #0f766e;
+}
+
+.toc .level-2 {
+  padding-left: 12px;
+}
+
+.toc .level-3 {
+  padding-left: 24px;
+}
+
+.page {
+  box-sizing: border-box;
+  width: min(100%, var(--page-width));
+  min-height: 297mm;
+  margin: 0 auto 40px;
+  padding: 22mm 20mm;
+  background: #ffffff;
+  box-shadow: 0 8px 28px rgb(15 23 42 / 14%);
+}
+
+.message {
+  padding: 12px;
+  border: 1px solid #d5dce5;
+  border-radius: 6px;
+  background: #f8fafc;
+  color: #415166;
+}
+
+.message.error {
+  border-color: #f2b8b5;
+  background: #fff5f5;
+  color: #b42318;
+}
+
+.message:empty {
+  display: none;
+}
+
+.content {
+  font-size: 14px;
+  line-height: 1.75;
+}
+
+.content h1,
+.content h2,
+.content h3,
+.content h4,
+.content h5,
+.content h6 {
+  color: #111827;
+  line-height: 1.35;
+  page-break-after: avoid;
+}
+
+.content h1 {
+  margin: 0 0 18px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #17202a;
+  font-size: 28px;
+}
+
+.content h2 {
+  margin-top: 30px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #d5dce5;
+  font-size: 21px;
+}
+
+.content h3 {
+  margin-top: 24px;
+  font-size: 17px;
+}
+
+.content p {
+  margin: 0 0 12px;
+}
+
+.content table {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  margin: 16px 0;
+  border-collapse: collapse;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.content th,
+.content td {
+  padding: 8px 10px;
+  border: 1px solid #cbd5e1;
+  vertical-align: top;
+}
+
+.content th {
+  background: #f1f5f9;
+}
+
+.content pre {
+  overflow: auto;
+  margin: 16px 0;
+  padding: 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  background: #0f172a;
+  color: #e2e8f0;
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.content code {
+  font-family: Consolas, "Courier New", monospace;
+}
+
+.content :not(pre) > code {
+  padding: 2px 5px;
+  border-radius: 4px;
+  background: #eef2f7;
+  color: #9f1239;
+  font-size: 0.92em;
+}
+
+.content blockquote {
+  margin: 16px 0;
+  padding: 4px 0 4px 14px;
+  border-left: 4px solid #94a3b8;
+  color: #475569;
+}
+
+.content img {
+  max-width: 100%;
+  height: auto;
+}
+
+.content hr {
+  border: 0;
+  border-top: 1px solid #d5dce5;
+  margin: 24px 0;
+}
+
+@media (max-width: 860px) {
+  .topbar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .topbar h1 {
+    max-width: 100%;
+  }
+
+  .layout {
+    display: block;
+    padding: 12px;
+  }
+
+  .toc {
+    position: static;
+    max-height: 220px;
+    margin-bottom: 12px;
+  }
+
+  .page {
+    min-height: auto;
+    padding: 18px;
+  }
+}
+
+@media print {
+  :root {
+    background: #ffffff;
+  }
+
+  .topbar,
+  .toc {
+    display: none;
+  }
+
+  .layout {
+    display: block;
+    max-width: none;
+    padding: 0;
+  }
+
+  .page {
+    width: auto;
+    min-height: auto;
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+  }
+
+  .content {
+    font-size: 11pt;
+  }
+
+  .content table {
+    display: table;
+    overflow: visible;
+    white-space: normal;
+    font-size: 9pt;
+  }
+
+  @page {
+    size: A4;
+    margin: 18mm;
+  }
+}

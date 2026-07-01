@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Markdown PDF Viewer</title>
+    <link rel="stylesheet" href="popup.css">
+  </head>
+  <body>
+    <main class="popup">
+      <header class="header">
+        <h1>Markdown PDF Viewer</h1>
+      </header>
+
+      <section class="panel">
+        <label for="urlInput" data-i18n="markdownUrlLabel">Markdown URL</label>
+        <textarea id="urlInput" rows="4" placeholder="https://raw.githubusercontent.com/user/repo/main/docs/sample.md"></textarea>
+        <div id="status" class="status" role="status" aria-live="polite"></div>
+        <button id="openButton" type="button" data-i18n="openPdfButton">Open PDF View</button>
+      </section>
+
+      <section class="panel compact">
+        <button id="currentButton" type="button" class="secondary" data-i18n="openCurrentTabButton">Open Current Tab</button>
+        <button id="fileButton" type="button" class="secondary" data-i18n="openLocalMarkdownButton">Open Local Markdown</button>
+        <input id="fileInput" type="file" accept=".md,.markdown,text/markdown,text/plain">
+      </section>
+    </main>
+    <script src="i18n.js"></script>
+    <script src="popup.js"></script>
+  </body>
+</html>

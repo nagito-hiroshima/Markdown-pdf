@@ -4,6 +4,13 @@
   <img src="https://github.com/nagito-hiroshima/Markdown-pdf/blob/main/icon.png?raw=true" alt="Markdown PDF Viewer icon" width="128" height="128">
 </p>
 
+## Samples
+
+<p align="center">
+  <img src="https://github.com/nagito-hiroshima/Markdown-pdf/blob/main/samples/sample_en.png?raw=true" alt="English sample preview" width="45%">
+  <img src="https://github.com/nagito-hiroshima/Markdown-pdf/blob/main/samples/sample_ja.png?raw=true" alt="Japanese sample preview" width="45%">
+</p>
+
 [日本語](#日本語) / [English](#english)
 
 ## 日本語

@@ -44,7 +44,7 @@ Markdown PDF Viewer は、GitHub や GitHub Raw URL の Markdown ファイルを
 GitHubのMarkdownページを開きます。
 
 ```text
-https://github.com/user/repository/blob/main/docs/sample.md
+https://github.com/nagito-hiroshima/Markdown-pdf/blob/main/samples/sample-document.md
 ```
 
 ページ上部に追加されるボタンを使います。
@@ -55,7 +55,7 @@ https://github.com/user/repository/blob/main/docs/sample.md
 Raw URLでも同じように使えます。
 
 ```text
-https://raw.githubusercontent.com/user/repository/main/docs/sample.md
+https://raw.githubusercontent.com/nagito-hiroshima/Markdown-pdf/refs/heads/main/samples/sample-document.md
 ```
 
 拡張機能アイコンをクリックすると、現在のタブ、手入力URL、ローカル `.md` ファイルからも開けます。
@@ -139,8 +139,7 @@ After changing files, reload the extension from the extensions page and then rel
 Open a Markdown file on GitHub.
 
 ```text
-https://github.com/user/repository/blob/main/docs/sample.md
-```
+https://github.com/nagito-hiroshima/Markdown-pdf/blob/main/samples/sample-document-en.md```
 
 Use the buttons added near the top of the page.
 
@@ -150,7 +149,7 @@ Use the buttons added near the top of the page.
 Raw URLs work the same way.
 
 ```text
-https://raw.githubusercontent.com/user/repository/main/docs/sample.md
+https://raw.githubusercontent.com/nagito-hiroshima/Markdown-pdf/refs/heads/main/samples/sample-document-en.md
 ```
 
 You can also use the extension popup to open the current tab, enter a Markdown URL manually, or open a local `.md` file.

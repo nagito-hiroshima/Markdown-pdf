@@ -28,3 +28,8 @@ jobs:
 
       - name: Validate manifest
         run: node -e "JSON.parse(require('fs').readFileSync('manifest.json','utf8'))"
+
+      - name: Validate locales
+        run: |
+          node -e "for (const file of ['_locales/en/messages.json','_locales/ja/messages.json']) JSON.parse(require('fs').readFileSync(file,'utf8'))"
+          node -e "const fs=require('fs'); const manifest=fs.readFileSync('manifest.json','utf8'); const keys=Array.from(manifest.matchAll(/__MSG_([A-Za-z0-9_]+)__/g), m=>m[1]); for (const locale of ['en','ja']) { const messages=JSON.parse(fs.readFileSync('_locales/' + locale + '/messages.json','utf8')); for (const key of keys) if (!messages[key]) throw new Error(locale + ' missing ' + key); }"

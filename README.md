@@ -25,7 +25,7 @@ Markdown PDF Viewer は、GitHub や GitHub Raw URL の Markdown ファイルを
 2. `chrome://extensions` または `edge://extensions` を開きます。
 3. デベロッパーモードを有効にします。
 4. `パッケージ化されていない拡張機能を読み込む` を選びます。
-5. このリポジトリのフォルダを選択します。
+5. このリポジトリ内の `extension/` フォルダを選択します。
 
 ファイルを変更した後は、拡張機能ページで拡張機能を再読み込みし、対象のMarkdownページも再読み込みしてください。
 
@@ -52,30 +52,44 @@ https://raw.githubusercontent.com/user/repository/main/docs/sample.md
 
 ### 構成
 
-| ファイル | 役割 |
+| パス | 役割 |
 | --- | --- |
-| `manifest.json` | Chrome拡張の設定 |
-| `_locales/` | 日本語・英語の翻訳 |
-| `i18n.js` | 拡張機能画面の翻訳適用 |
-| `background.js` | content script から依頼されたビューアタブを開く |
-| `content-script.js` | GitHub Markdownページにボタンを追加 |
-| `content-script.css` | ページ上ボタンのスタイル |
-| `popup.html` / `popup.js` / `popup.css` | 拡張機能ポップアップ |
-| `viewer.html` / `viewer.js` / `viewer.css` | PDF風Markdownビューア |
-| `markdown.js` | 軽量Markdownパーサ |
+| `extension/` | Chrome / Edge 拡張機能本体 |
+| `extension/manifest.json` | Chrome拡張の設定 |
+| `extension/_locales/` | 日本語・英語の翻訳 |
+| `extension/i18n.js` | 拡張機能画面の翻訳適用 |
+| `extension/background.js` | content script から依頼されたビューアタブを開く |
+| `extension/content-script.js` | GitHub Markdownページにボタンを追加 |
+| `extension/popup.html` / `extension/popup.js` / `extension/popup.css` | 拡張機能ポップアップ |
+| `extension/viewer.html` / `extension/viewer.js` / `extension/viewer.css` | PDF風Markdownビューア |
+| `.github/workflows/validate.yml` | 検証用GitHub Actions |
+| `.github/workflows/release.yml` | 自動リリース用GitHub Actions |
 | `architecture.md` | 要件・設計メモ |
 
 ### 検証
 
 ```powershell
-node --check background.js
-node --check content-script.js
-node --check i18n.js
-node --check markdown.js
-node --check popup.js
-node --check viewer.js
-node -e "JSON.parse(require('fs').readFileSync('manifest.json','utf8'))"
+node --check extension/background.js
+node --check extension/content-script.js
+node --check extension/i18n.js
+node --check extension/markdown.js
+node --check extension/popup.js
+node --check extension/viewer.js
+node -e "JSON.parse(require('fs').readFileSync('extension/manifest.json','utf8'))"
 ```
+
+### リリース
+
+`extension/manifest.json` の `version` と同じタグをpushすると、GitHub Actionsが配布用zipを作成してReleaseを公開します。
+
+```powershell
+git tag v1.0.0
+git push origin v1.0.0
+```
+
+GitHubのActions画面から `Release` ワークフローを手動実行することもできます。その場合も `v1.0.0` のようなタグ名を指定してください。
+
+配布zipは、展開したフォルダの直下に `manifest.json` が見える形で作成されます。
 
 ## English
 
@@ -100,7 +114,7 @@ It is intended for design notes, research documents, FPGA documentation, technic
 2. Go to `chrome://extensions` or `edge://extensions`.
 3. Enable developer mode.
 4. Choose `Load unpacked`.
-5. Select this repository folder.
+5. Select the `extension/` folder in this repository.
 
 After changing files, reload the extension from the extensions page and then reload the target Markdown page.
 
@@ -127,27 +141,41 @@ You can also use the extension popup to open the current tab, enter a Markdown U
 
 ### Project Files
 
-| File | Purpose |
+| Path | Purpose |
 | --- | --- |
-| `manifest.json` | Chrome extension manifest |
-| `_locales/` | English and Japanese translations |
-| `i18n.js` | Applies translations in extension pages |
-| `background.js` | Opens viewer tabs from content scripts |
-| `content-script.js` | Adds page buttons to GitHub Markdown pages |
-| `content-script.css` | Styles injected page buttons |
-| `popup.html` / `popup.js` / `popup.css` | Extension popup UI |
-| `viewer.html` / `viewer.js` / `viewer.css` | PDF-style Markdown viewer |
-| `markdown.js` | Lightweight Markdown parser |
+| `extension/` | Chrome / Edge extension source |
+| `extension/manifest.json` | Chrome extension manifest |
+| `extension/_locales/` | English and Japanese translations |
+| `extension/i18n.js` | Applies translations in extension pages |
+| `extension/background.js` | Opens viewer tabs from content scripts |
+| `extension/content-script.js` | Adds page buttons to GitHub Markdown pages |
+| `extension/popup.html` / `extension/popup.js` / `extension/popup.css` | Extension popup UI |
+| `extension/viewer.html` / `extension/viewer.js` / `extension/viewer.css` | PDF-style Markdown viewer |
+| `.github/workflows/validate.yml` | Validation GitHub Actions workflow |
+| `.github/workflows/release.yml` | Automated release GitHub Actions workflow |
 | `architecture.md` | Architecture and requirements notes |
 
 ### Development Checks
 
 ```powershell
-node --check background.js
-node --check content-script.js
-node --check i18n.js
-node --check markdown.js
-node --check popup.js
-node --check viewer.js
-node -e "JSON.parse(require('fs').readFileSync('manifest.json','utf8'))"
+node --check extension/background.js
+node --check extension/content-script.js
+node --check extension/i18n.js
+node --check extension/markdown.js
+node --check extension/popup.js
+node --check extension/viewer.js
+node -e "JSON.parse(require('fs').readFileSync('extension/manifest.json','utf8'))"
 ```
+
+### Release
+
+When you push a tag that matches the `version` in `extension/manifest.json`, GitHub Actions creates a release zip and publishes a GitHub Release.
+
+```powershell
+git tag v1.0.0
+git push origin v1.0.0
+```
+
+You can also run the `Release` workflow manually from the GitHub Actions page. Use a tag name such as `v1.0.0`.
+
+The release zip is created so that `manifest.json` is directly visible at the extracted folder root.

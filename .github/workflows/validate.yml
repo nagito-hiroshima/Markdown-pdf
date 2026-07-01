@@ -8,6 +8,10 @@ jobs:
   syntax:
     runs-on: ubuntu-latest
 
+    defaults:
+      run:
+        working-directory: extension
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4

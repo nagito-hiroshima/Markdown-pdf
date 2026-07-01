@@ -1,7 +1,7 @@
 # Markdown PDF Viewer
 
 <p align="center">
-  <img src="extension/icons/icon-128.png" alt="Markdown PDF Viewer icon" width="128" height="128">
+  <img src="https://github.com/nagito-hiroshima/Markdown-pdf/blob/main/icon.png?raw=true" alt="Markdown PDF Viewer icon" width="128" height="128">
 </p>
 
 [日本語](#日本語) / [English](#english)

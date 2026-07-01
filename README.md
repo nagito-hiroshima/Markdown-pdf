@@ -80,7 +80,7 @@ node -e "JSON.parse(require('fs').readFileSync('extension/manifest.json','utf8')
 
 ### リリース
 
-`extension/manifest.json` の `version` と同じタグをpushすると、GitHub Actionsが配布用zipを作成してReleaseを公開します。
+タグをpushすると、GitHub Actionsが配布パッケージ内の `extension/manifest.json` の `version` をタグに合わせてから、配布用zipを作成してReleaseを公開します。
 
 ```powershell
 git tag v1.0.0
@@ -169,7 +169,7 @@ node -e "JSON.parse(require('fs').readFileSync('extension/manifest.json','utf8')
 
 ### Release
 
-When you push a tag that matches the `version` in `extension/manifest.json`, GitHub Actions creates a release zip and publishes a GitHub Release.
+When you push a release tag, GitHub Actions updates the packaged `extension/manifest.json` version to match the tag, creates a release zip, and publishes a GitHub Release.
 
 ```powershell
 git tag v1.0.0

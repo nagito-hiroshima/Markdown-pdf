@@ -8,9 +8,16 @@
 
 ## 日本語
 
-Markdown PDF Viewer は、GitHub や GitHub Raw URL の Markdown ファイルを、ブラウザ上でPDF風に整形表示する Chrome / Edge 拡張機能です。
+Markdown PDF Viewer は、GitHub 上の Markdown を、ワンクリックでPDF風に表示・印刷できる Chrome / Edge 拡張機能です。
 
 設計メモ、研究資料、FPGA関連ドキュメント、技術仕様書など、Markdownで管理している資料を見やすく確認・印刷するためのツールです。
+
+### こんな人におすすめ
+
+- GitHubのREADMEや設計書をきれいに印刷したい
+- Markdownの仕様書をPDFっぽく共有したい
+- `raw.githubusercontent.com` の Markdown を見やすく表示したい
+- 研究資料・技術資料・設計書をMarkdownで管理している
 
 ### サンプル
 
@@ -28,6 +35,11 @@ Markdown PDF Viewer は、GitHub や GitHub Raw URL の Markdown ファイルを
 - ブラウザの印刷機能でPDF保存や印刷が可能
 - 拡張機能ポップアップからローカルMarkdownファイルを表示
 - 拡張機能UIは日本語と英語に対応
+
+### インストール
+
+- Chrome Web Store: 準備中
+- Microsoft Edge Add-ons: 準備中
 
 ### 開発用インストール
 
@@ -47,7 +59,7 @@ GitHubのMarkdownページを開きます。
 https://github.com/nagito-hiroshima/Markdown-pdf/blob/main/samples/sample-document.md
 ```
 
-ページ上部に追加されるボタンを使います。
+ページ上部に追加される `PDF表示` ボタンを押します。
 
 - `PDF表示`: PDF風ビューアで開く
 - `印刷`: PDF風ビューアを開き、印刷ダイアログを表示
@@ -139,7 +151,8 @@ After changing files, reload the extension from the extensions page and then rel
 Open a Markdown file on GitHub.
 
 ```text
-https://github.com/nagito-hiroshima/Markdown-pdf/blob/main/samples/sample-document-en.md```
+https://github.com/nagito-hiroshima/Markdown-pdf/blob/main/samples/sample-document-en.md
+```
 
 Use the buttons added near the top of the page.
 

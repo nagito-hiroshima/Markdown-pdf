@@ -91,3 +91,4 @@ button.secondary:hover {
 #fileInput {
   display: none;
 }
+.hint{margin:8px 0;color:#64748b;font-size:12px;line-height:1.45}.help-link{display:inline-flex;align-items:center;min-height:34px;color:#0f766e;font-weight:700;text-decoration:none}button:disabled{opacity:.55;cursor:not-allowed}

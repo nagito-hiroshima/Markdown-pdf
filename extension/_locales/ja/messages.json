@@ -57,5 +57,101 @@
   },
   "loadFailed": {
     "message": "Markdownの読み込みに失敗しました。"
+  },
+  "githubMarkdownRequired": {
+    "message": "GitHub上のMarkdownファイル（.md）を開いてから実行してください。"
+  },
+  "unsupportedMarkdownUrl": {
+    "message": "このURLは対応していません。GitHubのMarkdownファイル、Raw GitHub Markdown、またはMarkdown本文を返すHTTP/HTTPS URLを指定してください。"
+  },
+  "urlHelpText": {
+    "message": "GitHubの.mdファイル、Raw GitHub Markdown、Markdown本文を返すHTTP/HTTPS URLに対応しています。"
+  },
+  "loadingButton": {
+    "message": "開いています..."
+  },
+  "openingMarkdown": {
+    "message": "Markdownを開いています。"
+  },
+  "supportedMarkdownUrl": {
+    "message": "対応しているMarkdown URLです。"
+  },
+  "openSampleButton": {
+    "message": "サンプルを開く"
+  },
+  "openHelpLink": {
+    "message": "使い方を見る"
+  },
+  "localMarkdownOnly": {
+    "message": ".mdまたは.markdownファイルを選択してください。"
+  },
+  "errorTitle": {
+    "message": "Markdownを開けませんでした"
+  },
+  "errorInvalidUrl": {
+    "message": "URLの形式を確認してください。認証情報やHTTP/HTTPS以外のURLは使用できません。"
+  },
+  "errorUnsupportedUrl": {
+    "message": "GitHub上のMarkdownファイル（.md）を開いてから実行してください。"
+  },
+  "errorNetwork": {
+    "message": "Markdownを取得できませんでした。インターネット接続またはURLを確認してください。"
+  },
+  "errorTimeout": {
+    "message": "Markdownの取得がタイムアウトしました。しばらくしてから再試行してください。"
+  },
+  "errorHttp": {
+    "message": "サーバーエラーによりMarkdownを取得できませんでした。"
+  },
+  "errorNotFound": {
+    "message": "Markdownファイルが見つかりませんでした。URL、ブランチ名、ファイル名を確認してください。"
+  },
+  "errorAccessDenied": {
+    "message": "このファイルへアクセスできません。非公開リポジトリには現在対応していません。"
+  },
+  "errorNotMarkdown": {
+    "message": "MarkdownファイルではなくWebページが返されました。.mdファイルのURLを指定してください。"
+  },
+  "errorTooLarge": {
+    "message": "このMarkdownファイルは10MBの上限を超えています。"
+  },
+  "requestedUrlLabel": {
+    "message": "入力されたURL"
+  },
+  "technicalDetails": {
+    "message": "技術的な詳細"
+  },
+  "retryButton": {
+    "message": "再試行"
+  },
+  "openOtherUrlButton": {
+    "message": "別のURLを開く"
+  },
+  "viewHelpButton": {
+    "message": "使い方を見る"
+  },
+  "onboardingTitle": {
+    "message": "Markdownを印刷しやすいPDF風ページに変換します。"
+  },
+  "onboardingIntro": {
+    "message": "GitHub上のMarkdown、URL、ローカルファイルを開き、印刷画面からPDFとして保存できます。"
+  },
+  "onboardingStepsTitle": {
+    "message": "使い方"
+  },
+  "onboardingStepGithub": {
+    "message": "GitHub上の.mdまたは.markdownファイルを開きます。"
+  },
+  "onboardingStepButton": {
+    "message": "ページに表示される「PDF表示」ボタンを押します。"
+  },
+  "onboardingStepPopup": {
+    "message": "拡張機能アイコンからURLやローカルファイルも開けます。"
+  },
+  "onboardingStepPrint": {
+    "message": "印刷画面からPDFとして保存できます。"
+  },
+  "getStartedButton": {
+    "message": "使い始める"
   }
 }

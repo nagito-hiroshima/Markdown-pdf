@@ -57,5 +57,101 @@
   },
   "loadFailed": {
     "message": "Failed to load Markdown."
+  },
+  "githubMarkdownRequired": {
+    "message": "Open a Markdown file (.md) on GitHub before using this extension."
+  },
+  "unsupportedMarkdownUrl": {
+    "message": "This URL is not supported. Use a GitHub Markdown file, raw GitHub Markdown, or a direct Markdown HTTP/HTTPS URL."
+  },
+  "urlHelpText": {
+    "message": "GitHub .md files, raw GitHub Markdown, or direct Markdown HTTP/HTTPS URLs are supported."
+  },
+  "loadingButton": {
+    "message": "Opening..."
+  },
+  "openingMarkdown": {
+    "message": "Opening Markdown."
+  },
+  "supportedMarkdownUrl": {
+    "message": "This Markdown URL is supported."
+  },
+  "openSampleButton": {
+    "message": "Open Sample"
+  },
+  "openHelpLink": {
+    "message": "How to use"
+  },
+  "localMarkdownOnly": {
+    "message": "Select a .md or .markdown file."
+  },
+  "errorTitle": {
+    "message": "Could not open Markdown"
+  },
+  "errorInvalidUrl": {
+    "message": "Check the URL format. Do not include credentials or non-HTTP schemes."
+  },
+  "errorUnsupportedUrl": {
+    "message": "Open a Markdown file (.md) on GitHub before using this extension."
+  },
+  "errorNetwork": {
+    "message": "Could not fetch Markdown. Check your internet connection or URL."
+  },
+  "errorTimeout": {
+    "message": "Fetching Markdown timed out. Try again later."
+  },
+  "errorHttp": {
+    "message": "Could not fetch Markdown because the server returned an error."
+  },
+  "errorNotFound": {
+    "message": "Markdown file was not found. Check the URL, branch name, and file name."
+  },
+  "errorAccessDenied": {
+    "message": "This file cannot be accessed. Private repositories are not currently supported."
+  },
+  "errorNotMarkdown": {
+    "message": "A web page was returned instead of a Markdown file. Specify a .md file URL."
+  },
+  "errorTooLarge": {
+    "message": "This Markdown file is larger than the 10 MB limit."
+  },
+  "requestedUrlLabel": {
+    "message": "Requested URL"
+  },
+  "technicalDetails": {
+    "message": "Technical details"
+  },
+  "retryButton": {
+    "message": "Retry"
+  },
+  "openOtherUrlButton": {
+    "message": "Open another URL"
+  },
+  "viewHelpButton": {
+    "message": "View help"
+  },
+  "onboardingTitle": {
+    "message": "Turn Markdown into a printable PDF-style page."
+  },
+  "onboardingIntro": {
+    "message": "Open GitHub Markdown, URL Markdown, or a local file and save it as PDF from the print screen."
+  },
+  "onboardingStepsTitle": {
+    "message": "How to use"
+  },
+  "onboardingStepGithub": {
+    "message": "Open a .md or .markdown file on GitHub."
+  },
+  "onboardingStepButton": {
+    "message": "Press the PDF View button shown on the page."
+  },
+  "onboardingStepPopup": {
+    "message": "You can also open URLs and local files from the extension icon."
+  },
+  "onboardingStepPrint": {
+    "message": "Use the print screen to save as PDF."
+  },
+  "getStartedButton": {
+    "message": "Get started"
   }
 }

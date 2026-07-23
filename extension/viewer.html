@@ -25,11 +25,23 @@
       </aside>
       <article class="page">
         <div id="message" class="message" data-i18n="loadingMarkdown">Loading Markdown.</div>
+        <section id="errorPanel" class="error-panel" hidden>
+          <h2 id="errorTitle"></h2>
+          <p id="errorDescription"></p>
+          <dl><dt data-i18n="requestedUrlLabel">Requested URL</dt><dd id="errorUrl"></dd></dl>
+          <details><summary data-i18n="technicalDetails">Technical details</summary><pre id="errorDetails"></pre></details>
+          <div class="error-actions">
+            <button id="retryButton" type="button" data-i18n="retryButton">Retry</button>
+            <button id="openOtherButton" type="button" data-i18n="openOtherUrlButton">Open another URL</button>
+            <button id="helpButton" type="button" data-i18n="viewHelpButton">View help</button>
+          </div>
+        </section>
         <div id="content" class="content"></div>
       </article>
     </main>
 
     <script src="i18n.js"></script>
+    <script src="url-utils.js"></script>
     <script src="markdown.js"></script>
     <script src="viewer.js"></script>
   </body>

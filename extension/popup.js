@@ -1,28 +1,32 @@
+const SAMPLE_URL = "https://github.com/nagito-hiroshima/Markdown-pdf/blob/main/samples/sample-document.md";
+
 const urlInput = document.getElementById("urlInput");
 const openButton = document.getElementById("openButton");
 const currentButton = document.getElementById("currentButton");
 const fileButton = document.getElementById("fileButton");
+const sampleButton = document.getElementById("sampleButton");
+const helpLink = document.getElementById("helpLink");
 const fileInput = document.getElementById("fileInput");
 const statusBox = document.getElementById("status");
 
-const setStatus = (message) => {
+let activeTabUrl = "";
+
+const setStatus = (message, alert = false) => {
   statusBox.textContent = message || "";
+  statusBox.setAttribute("role", alert ? "alert" : "status");
 };
 
-const githubBlobToRaw = (url) => {
-  try {
-    const parsed = new URL(url);
-    if (parsed.hostname !== "github.com") return url;
-    const parts = parsed.pathname.split("/").filter(Boolean);
-    const blobIndex = parts.indexOf("blob");
-    if (parts.length < 5 || blobIndex !== 2) return url;
-    const [owner, repo] = parts;
-    const branch = parts[3];
-    const path = parts.slice(4).join("/");
-    return `https://raw.githubusercontent.com/${owner}/${repo}/${branch}/${path}`;
-  } catch {
-    return url;
-  }
+const messageForValidation = (validation) => {
+  if (validation?.reason === "github_not_markdown") return t("githubMarkdownRequired");
+  if (validation?.errorCode === "INVALID_URL") return t("invalidUrl");
+  return t("unsupportedMarkdownUrl");
+};
+
+const setLoading = (loading) => {
+  openButton.disabled = loading;
+  currentButton.disabled = loading || !UrlUtils.validateMarkdownUrl(activeTabUrl).ok;
+  sampleButton.disabled = loading;
+  openButton.textContent = loading ? t("loadingButton") : t("openPdfButton");
 };
 
 const openViewer = (params) => {
@@ -33,52 +37,51 @@ const openViewer = (params) => {
 
 const openUrl = (rawUrl) => {
   const value = rawUrl.trim();
-  if (!value) {
-    setStatus(t("enterMarkdownUrl"));
-    return;
-  }
+  if (!value) return setStatus(t("enterMarkdownUrl"), true);
+  const validation = UrlUtils.validateMarkdownUrl(value);
+  if (!validation.ok) return setStatus(messageForValidation(validation), true);
+  setLoading(true);
+  setStatus(t("openingMarkdown"));
+  openViewer({ source: "url", url: validation.url });
+  window.close();
+};
 
-  let parsed;
-  try {
-    parsed = new URL(value);
-  } catch {
-    setStatus(t("invalidUrl"));
-    return;
-  }
-
-  const targetUrl = githubBlobToRaw(parsed.toString());
-  openViewer({ source: "url", url: targetUrl });
+const validateInput = () => {
+  const value = urlInput.value.trim();
+  if (!value) return setStatus("");
+  const validation = UrlUtils.validateMarkdownUrl(value);
+  setStatus(validation.ok ? t("supportedMarkdownUrl") : messageForValidation(validation), !validation.ok);
 };
 
 chrome.tabs.query({ active: true, currentWindow: true }, ([tab]) => {
-  if (tab?.url) urlInput.value = githubBlobToRaw(tab.url);
+  activeTabUrl = tab?.url || "";
+  const validation = UrlUtils.validateMarkdownUrl(activeTabUrl);
+  if (validation.ok) {
+    urlInput.value = validation.url;
+  } else if (activeTabUrl?.startsWith("https://github.com/")) {
+    setStatus(messageForValidation(validation), true);
+  }
+  currentButton.disabled = !validation.ok;
 });
 
+urlInput.addEventListener("input", validateInput);
 openButton.addEventListener("click", () => openUrl(urlInput.value));
-
-currentButton.addEventListener("click", () => {
-  chrome.tabs.query({ active: true, currentWindow: true }, ([tab]) => {
-    openUrl(tab?.url || "");
-  });
+currentButton.addEventListener("click", () => openUrl(activeTabUrl));
+sampleButton.addEventListener("click", () => openUrl(SAMPLE_URL));
+helpLink.addEventListener("click", (event) => {
+  event.preventDefault();
+  chrome.tabs.create({ url: chrome.runtime.getURL("onboarding.html") });
 });
 
 fileButton.addEventListener("click", () => fileInput.click());
-
 fileInput.addEventListener("change", () => {
   const file = fileInput.files?.[0];
   if (!file) return;
-
+  if (!/\.(md|markdown)$/i.test(file.name)) return setStatus(t("localMarkdownOnly"), true);
   const reader = new FileReader();
   reader.addEventListener("load", () => {
-    chrome.storage.local.set(
-      {
-        localMarkdown: {
-          name: file.name,
-          content: String(reader.result || ""),
-          updatedAt: Date.now()
-        }
-      },
-      () => openViewer({ source: "local" })
+    chrome.storage.local.set({ localMarkdown: { name: file.name, content: String(reader.result || ""), updatedAt: Date.now() } }, () =>
+      openViewer({ source: "local" })
     );
   });
   reader.readAsText(file);

@@ -210,3 +210,61 @@ git push origin v1.0.0
 You can also run the `Release` workflow manually from the GitHub Actions page. Use a tag name such as `v1.0.0`.
 
 The release zip is created so that `manifest.json` is directly visible at the extracted folder root.
+
+## Onboarding and first run
+
+When the extension is installed for the first time, it opens `onboarding.html` once. The page explains how to open GitHub Markdown, use the on-page **PDF View** button, open URLs or local files from the extension icon, and save the rendered document as PDF from the browser print dialog. It also includes Japanese/English language buttons and a sample Markdown button.
+
+Sample workflow:
+
+1. Open the sample: `https://github.com/nagito-hiroshima/Markdown-pdf/blob/main/samples/sample-document.md`.
+2. Click the **PDF View** button added to the GitHub Markdown page, or open the extension popup and click **Open Sample**.
+3. Click **Print** in the viewer.
+4. Choose **Save as PDF** in the browser print screen.
+
+## Supported URLs
+
+The extension accepts these URL types:
+
+- GitHub Markdown blob URLs such as `https://github.com/{owner}/{repo}/blob/{branch}/{path}.md`.
+- GitHub Markdown blob URLs ending in `.markdown`.
+- Raw GitHub URLs such as `https://raw.githubusercontent.com/.../*.md` or `*.markdown`.
+- HTTP/HTTPS URLs that directly return Markdown text.
+
+GitHub blob URLs are converted to raw GitHub URLs before the viewer fetches the file.
+
+## Unsupported URLs
+
+The extension intentionally does not pass these pages to the viewer:
+
+- GitHub repository top pages.
+- GitHub Issues, Pull Requests, Actions, and other non-file pages.
+- GitHub directory (`tree`) pages.
+- Non-Markdown files such as `.txt`, `.html`, or source code files.
+- `javascript:`, `data:`, `file:`, and other non-HTTP/HTTPS URLs.
+- URLs containing usernames or passwords.
+
+If the current GitHub page is not a Markdown file, the popup shows: “Open a Markdown file (.md) on GitHub before using this extension.”
+
+## Troubleshooting fetch errors
+
+The viewer no longer displays only the browser's raw `Failed to fetch` message. Markdown fetching is performed in the Manifest V3 service worker and errors are classified as invalid URL, unsupported URL, network error, timeout, HTTP error, not found, access denied, not Markdown, or too large.
+
+If fetching fails, check the following:
+
+- Confirm that your internet connection is available.
+- Confirm that the URL points directly to a Markdown file or Markdown text.
+- For GitHub, confirm the owner, repository, branch name, and file path.
+- If you see a 404-style message, the file path or branch may be wrong.
+- If you see an access-denied message, the repository may be private.
+- If an HTML page was returned, open the actual `.md` file rather than a repository, issue, pull request, action, or directory page.
+- Retry later if the request timed out.
+- Files larger than about 10 MB are rejected.
+
+## Private GitHub repositories
+
+Private GitHub repositories are not currently supported for remote fetching. The extension fetches Markdown with `credentials: "omit"`, so GitHub authentication cookies are not sent. Download the file locally and use **Open Local Markdown** if you need to render private content.
+
+## Permissions
+
+The extension requests `activeTab` to inspect the current tab URL from the popup and `storage` to pass local Markdown content to the viewer. Host permissions include GitHub, raw GitHub, and HTTP/HTTPS URLs because the popup supports user-entered Markdown URLs outside GitHub; the service worker validates schemes, rejects credentialed URLs, follows redirects carefully, and blocks HTML responses before rendering.

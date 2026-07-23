@@ -24,10 +24,19 @@ const MarkdownPdf = (() => {
     return slug;
   };
 
+  const safeUrl = (value) => {
+    try {
+      const url = new URL(value, location.href);
+      return ["http:", "https:", "mailto:"].includes(url.protocol) ? escapeHtml(url.href) : "#";
+    } catch {
+      return "#";
+    }
+  };
+
   const inline = (text) => {
     let html = escapeHtml(text);
-    html = html.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img alt="$1" src="$2">');
-    html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noreferrer">$1</a>');
+    html = html.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, (_match, alt, src) => `<img alt="${alt}" src="${safeUrl(src)}">`);
+    html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_match, label, href) => `<a href="${safeUrl(href)}" target="_blank" rel="noreferrer">${label}</a>`);
     html = html.replace(/`([^`]+)`/g, "<code>$1</code>");
     html = html.replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
     html = html.replace(/\*([^*]+)\*/g, "<em>$1</em>");

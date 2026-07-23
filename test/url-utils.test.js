@@ -1,0 +1,15 @@
+const assert = require('node:assert/strict');
+const UrlUtils = require('../extension/url-utils.js');
+const okBlob = 'https://github.com/nagito-hiroshima/Markdown-pdf/blob/main/samples/sample-document.md';
+assert.equal(UrlUtils.isGithubMarkdownBlobUrl(okBlob), true);
+assert.equal(UrlUtils.githubBlobToRawUrl(okBlob), 'https://raw.githubusercontent.com/nagito-hiroshima/Markdown-pdf/main/samples/sample-document.md');
+assert.equal(UrlUtils.isGithubRawMarkdownUrl('https://raw.githubusercontent.com/a/b/main/README.md'), true);
+assert.equal(UrlUtils.validateMarkdownUrl('https://github.com/a/b/blob/main/doc.markdown').ok, true);
+assert.equal(UrlUtils.validateMarkdownUrl('https://github.com/a/b').ok, false);
+assert.equal(UrlUtils.validateMarkdownUrl('https://github.com/a/b/tree/main/docs').ok, false);
+assert.equal(UrlUtils.validateMarkdownUrl('https://github.com/a/b/blob/main/a.txt').ok, false);
+assert.equal(UrlUtils.validateMarkdownUrl('not a url').errorCode, 'INVALID_URL');
+assert.equal(UrlUtils.validateMarkdownUrl('javascript:alert(1)').ok, false);
+assert.equal(UrlUtils.validateMarkdownUrl('https://u:p@example.com/doc.md').ok, false);
+assert.equal(UrlUtils.validateMarkdownUrl('https://example.com/markdown').ok, true);
+console.log('url-utils tests passed');
